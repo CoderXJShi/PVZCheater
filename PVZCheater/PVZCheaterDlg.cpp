@@ -12,6 +12,11 @@
 #define new DEBUG_NEW
 #endif
 
+#define DLog(fmt, ...) \
+CString str; \
+str.Format(CString(fmt), __VA_ARGS__); \
+AfxMessageBox(str);
+
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -65,7 +70,7 @@ BEGIN_MESSAGE_MAP(CPVZCheaterDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_COURSE, &CPVZCheaterDlg::onBtnClickedCourse)
+	ON_BN_CLICKED(IDC_SOURCECODE, &CPVZCheaterDlg::onBtnClickedSourceCode)
 END_MESSAGE_MAP()
 
 
@@ -154,10 +159,14 @@ HCURSOR CPVZCheaterDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CPVZCheaterDlg::onBtnClickedCourse()
+void CPVZCheaterDlg::onBtnClickedSourceCode()
 {
-	int age = 20;
-	CString str;
-	str.Format(CString("age is %d"), age);
-	MessageBox(str, CString(""), MB_YESNOCANCEL | MB_ICONWARNING);
+	ShellExecute(
+		NULL,
+		CString("open"),
+		CString("https://github.com/CoderXJShi/PVZCheater"),
+		NULL,
+		NULL,
+		SW_SHOWNORMAL);
+
 }

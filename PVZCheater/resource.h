@@ -8,6 +8,7 @@
 #define IDD_PVZCHEATER_DIALOG           102
 #define IDR_MAINFRAME                   128
 #define IDC_COURSE                      1000
+#define IDC_SOURCECODE                  1000
 
 // Next default values for new objects
 // 
